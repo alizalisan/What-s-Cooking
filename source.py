@@ -137,6 +137,23 @@ print('Logistic Regression testing accuracy score: {0:0.4f}\n'. format(accuracy_
 
 performanceAnalysis(logisticRegr, "Logistic Regression Confusion Matrix")
 
+"""
+2. SDG
+"""
+from sklearn.linear_model import SGDClassifier
+
+SGD = SGDClassifier()
+SGD.fit(x_train, y_train)
+
+predicted = SGD.predict(x_train)
+print('SGD training accuracy score: {0:0.4f}'. format(accuracy_score(y_train, predicted)))
+
+predicted = SGD.predict(x_val)
+print('SGD validation accuracy score: {0:0.4f}'. format(accuracy_score(y_val, predicted)))
+
+predicted = SGD.predict(x_test)
+print('SGD testing accuracy score: {0:0.4f}\n'. format(accuracy_score(y_test, predicted)))
+
 
 """
 Validation Curves for SGD
