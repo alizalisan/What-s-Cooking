@@ -154,6 +154,46 @@ print('SGD validation accuracy score: {0:0.4f}'. format(accuracy_score(y_val, pr
 predicted = SGD.predict(x_test)
 print('SGD testing accuracy score: {0:0.4f}\n'. format(accuracy_score(y_test, predicted)))
 
+"""
+3. SVM
+"""
+from sklearn.svm import SVC
+
+svclassifier = SVC(kernel='linear', random_state=123)  
+svclassifier.fit(x_train, y_train)
+
+predicted = svclassifier.predict(x_train)
+print('SVM training accuracy score: {0:0.4f}'. format(accuracy_score(y_train, predicted)))
+
+predicted = svclassifier.predict(x_val)
+print('SVM validation score: {0:0.4f}'. format(accuracy_score(y_val, predicted)))
+
+predicted = svclassifier.predict(x_test)
+print('SVM testing score: {0:0.4f}\n'. format(accuracy_score(y_test, predicted)))
+
+
+"""
+4. Naive Bayes
+"""
+from sklearn.naive_bayes import MultinomialNB
+
+naiveBayes = MultinomialNB()
+MultinomialNB(alpha=1.0, class_prior=None, fit_prior=True)
+
+naiveBayes.fit(x_train.toarray(),y_train)
+predicted = naiveBayes.predict(x_train.toarray())
+print('NB training accuracy score: {0:0.4f}'. format(accuracy_score(y_train, predicted)))
+
+predicted = naiveBayes.predict(x_val.toarray())
+print('NB validation accuracy score: {0:0.4f}'. format(accuracy_score(y_val, predicted)))
+
+predicted = naiveBayes.predict(x_test.toarray())
+print('NB testing accuracy score: {0:0.4f}\n'. format(accuracy_score(y_test, predicted)))
+
+performanceAnalysis(naiveBayes, "Naive Bayes Confusion Matrix")
+
+plt.show()
+
 
 """
 Validation Curves for SGD
